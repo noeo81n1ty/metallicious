@@ -565,8 +565,8 @@ def find_ligand_pattern(new_syst, ligands_nodes):
         selected_ligand_1 = MDAnalysis.Merge(new_syst.atoms[ligands_node])
         mol1 = selected_ligand_1.select_atoms("not element DUMMY").convert_to("RDKIT", force=True)
 
-        for idx, unique_lingad in enumerate(unique_ligands):
-            selected_ligand_2 = MDAnalysis.Merge(new_syst.atoms[unique_lingad])
+        for idx, unique_ligand in enumerate(unique_ligands):
+            selected_ligand_2 = MDAnalysis.Merge(new_syst.atoms[unique_ligand])
             mol2 = selected_ligand_2.select_atoms("not element DUMMY").convert_to("RDKIT", force=True)
 
             if (mol1.HasSubstructMatch(mol2) and mol2.HasSubstructMatch(mol1)):

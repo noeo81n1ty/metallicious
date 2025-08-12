@@ -72,6 +72,8 @@ class supramolecular_structure:
         #self.topol = self.make_metals_first(topol)
         self.topol = topol
 
+        self.stk_molecule = None  # this is for the stk molecule, if it is used
+
         self.allow_new_templates = True
 
         self.metal_charge_dict = {}
@@ -220,7 +222,7 @@ class supramolecular_structure:
         if method == 'gaff' or homoleptic_ligand_topol is not None:
             metal_indicies = prepare_initial_topology(new_filename, self.metal_names, self.sites[0].metal_charge,
                                                       coord_filename, topol_filename, self.vdw_type,
-                                                      ligand_topol=homoleptic_ligand_topol)
+                                                      ligand_topol=homoleptic_ligand_topol, stk_molecule=self.stk_molecule,)
             self.filename = f'{subdir}/{coord_filename}'
             self.topol = f'{subdir}/{topol_filename}'
 

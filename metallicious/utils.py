@@ -68,3 +68,43 @@ def guess_chirality(syst):
         chirality[not_dummy[idx]]  = atom.GetChiralTag()
 
     return chirality
+
+def get_mda_bonds(syst: MDAnalysis.Universe) -> list[tuple[int, int]]:
+    """Get the mdanalysis bonds in an atom group."""
+    bonds = []
+
+    for bond in syst.bonds:
+        indices = tuple(bond.indices)
+
+        idx1, idx2 = indices
+        if idx1 in syst.atoms.indices and idx2 in syst.atoms.indices: 
+            bonds.append(indices)
+    return tuple(bonds)
+
+# def get_mda_bonds(syst):
+#     '''
+#     Returns the bonds in the MDAnalysis format
+
+#     :param syst: (MDAnalysis.Universe.atoms) input structure
+#     :return: (list(tuple(int, int))) list of tuples with bond indices
+#     '''
+#     bonds = []
+#     for bond in syst.bonds:
+#         bonds.append((bond[0].index, bond[1].index))
+#     return bonds
+
+# def get_mda_bonds_min2degree(syst):
+#     '''
+#     Returns a list of bonds where both atoms are in the given atomgroup.
+
+#     :param syst: (MDAnalysis.Universe.atoms) input structure
+#     :return: (list(tuple(int, int))) list of tuples with bond indices
+#     '''
+
+#     bonds = []
+#     atom_indices = set(atom.index for atom in syst.atoms)
+#     for bond in syst.bonds:
+#         if bond[0].index in atom_indices and bond[1].index in atom_indices:
+#             bonds.append((bond[0].index, bond[1].index))
+#     return bonds
+#     return ligand_bonds

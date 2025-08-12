@@ -13,6 +13,15 @@ import argparse
 import rdkit
 import numpy as np
 
+import logging
+
+# logger.setLevel(logging.INFO)
+# if not logger.hasHandlers():
+#     handler = logging.StreamHandler()
+#     handler.setFormatter(logging.Formatter('%(message)s'))
+#     logger.addHandler(handler)
+
+
 def check_antechamber_if_available():
     '''
     Checks if antechamber (ambertools) is installed)
@@ -21,7 +30,7 @@ def check_antechamber_if_available():
     return shutil.which('antechamber') is not None
 
 
-def antechamber(pdbfile, output, charge=None):
+def antechamber(pdbfile, output, charge=None, stk_ligand=None):
     '''
     Simple antechamber interface.  It runs with GAFF2. Sometimes it gives charge which is not equal to formal charge:
     we simply subtract the diffrence over all atoms
@@ -47,8 +56,9 @@ def antechamber(pdbfile, output, charge=None):
     tmpdir_path = mkdtemp()
     logger.info(f"[ ] Current path: {pwd:s}")
     logger.info(f"[ ] Going to temporary path {tmpdir_path:s}")
-
+    
     syst = MDAnalysis.Universe(pdbfile)
+
     os.chdir(tmpdir_path)
 
     if len(syst.atoms.names)!=len(set(syst.atoms.names)):
@@ -57,8 +67,13 @@ def antechamber(pdbfile, output, charge=None):
     syst.atoms.write('temp.pdb')
 
     if charge is None:
-        # force=True ignores warning that there are missing hydrogens (needed for example for CO molecule)
-        mol = syst.atoms.convert_to("RDKIT", force=True)
+        # NOTE: We need to use stk_ligand to get the formal charge otherwise we get 
+        # nonsensical results for guessing the charge when working with a template from stk
+        if stk_ligand is not None:
+            mol = MDAnalysis.Universe(stk_ligand.to_rdkit_mol()).atoms.convert_to("RDKIT", force=True)
+        else:
+            # force=True ignores warning that there are missing hydrogens (needed for example for CO molecule)
+            mol = syst.atoms.convert_to("RDKIT", force=True)
         charge = rdkit.Chem.GetFormalCharge(mol)
         logger.info(f"    Guessed charge: {charge:}")
 
@@ -81,6 +96,21 @@ def antechamber(pdbfile, output, charge=None):
         assertion="Errors = 0")
     run_external("parmchk2 -i temp.mol2 -f mol2 -o temp.frcmod")
     run_external("tleap -f tleap.in")
+
+    # remove later
+    # filepath: /Users/noeobersteiner/source/metallicious/metallicious/antechamber_interface.py
+    # ...existing code...
+    #run_external("tleap -f tleap.in")
+    
+    # Check if files exist
+    if not (os.path.exists('temp.prmtop') and os.path.exists('temp.inpcrd')):
+        logger.error("tleap failed to generate temp.prmtop or temp.inpcrd. Check output.txt for errors.")
+        with open("output.txt") as f:
+            logger.error(f.read())
+        raise FileNotFoundError("tleap failed to generate temp.prmtop or temp.inpcrd")
+    
+    #parm = pmd.load_file('temp.prmtop', 'temp.inpcrd')
+    # ...existing code...
 
     parm = pmd.load_file('temp.prmtop', 'temp.inpcrd')
     parm.save('topol.top', format='gromacs')
