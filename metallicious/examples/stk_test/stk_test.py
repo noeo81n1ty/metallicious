@@ -65,7 +65,7 @@ def main() -> None:
         stk_mol = build_complex(output / 'PdComplex.xyz',2.5)
 
         os.chdir(Path(__file__).resolve().parent) #to prevent nested init_topol folders
-        complex = supramolecular_structure(str(output / 'PdComplex.xyz'), metal_charges={'Pd': 2}, LJ_type='uff', truncation_scheme = "dihedral", covalent_cutoff = 2, rmsd_cutoff = 10)
+        complex = supramolecular_structure(str(output / 'PdComplex.xyz'), metal_charges={'Pd': 2}, LJ_type='uff', truncation_scheme = "angle")#, covalent_cutoff = 2, rmsd_cutoff = 10)
         complex.stk_molecule = stk_mol  
         complex.parametrize(out_coord='out.pdb', out_topol='out.top', prepare_initial_topology=True)
 

@@ -14,32 +14,16 @@ REMARK     285 PROTEIN DATA BANK CONVENTIONS REQUIRE THAT
 REMARK     285 CRYST1 RECORD IS INCLUDED, BUT THE VALUES ON
 REMARK     285 THIS RECORD ARE MEANINGLESS.
 ATOM      1  Pd  UNK X   1      13.292  -4.841  -3.563  1.00  0.00      SYSTPD  
-ATOM      2  H   UNK X   1      13.500  -6.011  -0.842  1.00  0.00      SYST H  
-ATOM      3  C   UNK X   1      12.733  -8.040  -0.798  1.00  0.00      SYST C  
-ATOM      4  C   UNK X   1      13.048  -6.831  -1.404  1.00  0.00      SYST C  
-ATOM      5  N   UNK X   1      12.807  -6.623  -2.707  1.00  0.00      SYST N  
-ATOM      6  C   UNK X   1      11.885  -8.836  -2.920  1.00  0.00      SYST C  
-ATOM      7  C   UNK X   1      12.245  -7.596  -3.446  1.00  0.00      SYST C  
-ATOM      8  H   UNK X   1      12.080  -7.374  -4.503  1.00  0.00      SYST H  
-ATOM      9  H   UNK X   1      13.777  -2.668  -1.609  1.00  0.00      SYST H  
-ATOM     10  C   UNK X   1      11.995  -2.235  -0.449  1.00  0.00      SYST C  
-ATOM     11  C   UNK X   1      12.727  -2.903  -1.422  1.00  0.00      SYST C  
-ATOM     12  N   UNK X   1      12.170  -3.864  -2.175  1.00  0.00      SYST N  
-ATOM     13  C   UNK X   1      10.065  -3.566  -1.048  1.00  0.00      SYST C  
-ATOM     14  C   UNK X   1      10.878  -4.188  -1.994  1.00  0.00      SYST C  
-ATOM     15  H   UNK X   1      10.480  -4.983  -2.630  1.00  0.00      SYST H  
-ATOM     16  H   UNK X   1      15.819  -3.419  -4.182  1.00  0.00      SYST H  
-ATOM     17  C   UNK X   1      15.435  -1.496  -5.109  1.00  0.00      SYST C  
-ATOM     18  C   UNK X   1      15.072  -2.709  -4.541  1.00  0.00      SYST C  
-ATOM     19  N   UNK X   1      13.783  -3.059  -4.414  1.00  0.00      SYST N  
-ATOM     20  C   UNK X   1      13.091  -0.996  -5.442  1.00  0.00      SYST C  
-ATOM     21  C   UNK X   1      12.819  -2.228  -4.848  1.00  0.00      SYST C  
-ATOM     22  H   UNK X   1      11.787  -2.562  -4.711  1.00  0.00      SYST H  
-ATOM     23  H   UNK X   1      15.540  -6.781  -3.471  1.00  0.00      SYST H  
-ATOM     24  C   UNK X   1      16.181  -7.334  -5.469  1.00  0.00      SYST C  
-ATOM     25  C   UNK X   1      15.396  -6.656  -4.546  1.00  0.00      SYST C  
-ATOM     26  N   UNK X   1      14.425  -5.819  -4.942  1.00  0.00      SYST N  
-ATOM     27  C   UNK X   1      14.929  -6.278  -7.250  1.00  0.00      SYST C  
-ATOM     28  C   UNK X   1      14.198  -5.631  -6.254  1.00  0.00      SYST C  
-ATOM     29  H   UNK X   1      13.401  -4.932  -6.517  1.00  0.00      SYST H  
+ATOM      2  C   UNK X   1      13.048  -6.831  -1.404  1.00  0.00      SYST C  
+ATOM      3  N   UNK X   1      12.807  -6.623  -2.707  1.00  0.00      SYST N  
+ATOM      4  C   UNK X   1      12.245  -7.596  -3.446  1.00  0.00      SYST C  
+ATOM      5  C   UNK X   1      12.727  -2.903  -1.422  1.00  0.00      SYST C  
+ATOM      6  N   UNK X   1      12.170  -3.864  -2.175  1.00  0.00      SYST N  
+ATOM      7  C   UNK X   1      10.878  -4.188  -1.994  1.00  0.00      SYST C  
+ATOM      8  C   UNK X   1      15.072  -2.709  -4.541  1.00  0.00      SYST C  
+ATOM      9  N   UNK X   1      13.783  -3.059  -4.414  1.00  0.00      SYST N  
+ATOM     10  C   UNK X   1      12.819  -2.228  -4.848  1.00  0.00      SYST C  
+ATOM     11  C   UNK X   1      15.396  -6.656  -4.546  1.00  0.00      SYST C  
+ATOM     12  N   UNK X   1      14.425  -5.819  -4.942  1.00  0.00      SYST N  
+ATOM     13  C   UNK X   1      14.198  -5.631  -6.254  1.00  0.00      SYST C  
 END
